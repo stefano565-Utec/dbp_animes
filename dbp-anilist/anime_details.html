@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Anime</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .anime-details {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .anime-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Detalles del Anime</h1>
+        
+        <div class="anime-details">
+            <h2>{{ anime_details.title }}</h2>
+            
+            <img src="{{ url_for('static', filename='images/' ~ anime_details.poster) }}" alt="{{ anime_details.title }}" class="anime-image">
+            
+            <p><strong>Géneros:</strong> {{ anime_details.genres|join(', ') }}</p>
+            <p><strong>Rating:</strong> {{ anime_details.rating }}</p>
+            <p><strong>Episodios:</strong> {{ anime_details.episodes }}</p>
+            <p><strong>Formato:</strong> {{ anime_details.format }}</p>
+            
+            <h3>Reseñas:</h3>
+            <ul>
+                {% for review in anime_details.reviews %}
+                <li>{{ review }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <a href="/">Volver a la Página Principal</a>
+    </div>
+</body>
+</html>

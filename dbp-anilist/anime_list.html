@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Animes</title>
+    <style>
+        /* Estilos aquí... */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Animes</h1>
+        
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Géneros</th>
+                <th>Rating</th>
+            </tr>
+            
+            {% for anime in anime_list %}
+            <tr>
+                <td>{{ anime.id }}</td>
+                <td>{{ anime.title }}</td>
+                <td>{{ anime.genres|join(', ') }}</td>
+                <td>{{ anime.rating }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+        <a href="/">Volver a la Página Principal</a>
+    </div>
+</body>
+</html>
+
+
